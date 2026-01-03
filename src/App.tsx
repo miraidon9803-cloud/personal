@@ -5,6 +5,7 @@ import { About } from './components/About';
 import { Skills } from './components/Skills';
 import { Portfolio } from './components/Portfolio';
 import { Contact } from './components/Contact';
+import './styles/globals.css';
 
 export default function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -21,12 +22,24 @@ export default function App() {
   }, []);
 
   return (
-    <div className="bg-black">
+    <div style={{ backgroundColor: '#000000' }}>
       {/* Progress Bar */}
-      <div className="fixed top-0 left-0 w-full h-1 bg-zinc-900 z-50">
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '4px',
+        backgroundColor: '#18181b',
+        zIndex: 50
+      }}>
         <div
-          className="h-full bg-green-500 transition-all duration-150"
-          style={{ width: `${scrollProgress}%` }}
+          style={{
+            height: '100%',
+            backgroundColor: '#22c55e',
+            width: `${scrollProgress}%`,
+            transition: 'width 150ms ease'
+          }}
         />
       </div>
 

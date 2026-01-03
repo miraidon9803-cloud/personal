@@ -1,74 +1,76 @@
+import { useState } from 'react';
+import '../styles/skills.css';
+
 export function Skills() {
-  const skillCategories = [
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+
+  const skills = [
     {
-      category: 'Frontend',
-      skills: [
-        { name: 'React', level: 90 },
-        { name: 'TypeScript', level: 85 },
-        { name: 'JavaScript', level: 90 },
-        { name: 'HTML/CSS', level: 95 },
-      ],
+      name: 'React',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
+      description: '컴포넌트 기반 UI 개발',
+      projects: ['쇼핑몰 플랫폼', 'OTT 스트리밍 플랫폼'],
     },
     {
-      category: 'Backend & Tools',
-      skills: [
-        { name: 'Firebase', level: 80 },
-        { name: 'Git', level: 85 },
-        { name: 'REST API', level: 75 },
-        { name: 'Responsive Design', level: 90 },
-      ],
+      name: 'JavaScript',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+      description: '모던 JavaScript ES6+',
+      projects: ['OTT 스트리밍 플랫폼'],
+    },
+    {
+      name: 'TypeScript',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+      description: '타입 안정성을 갖춘 개발',
+      projects: ['쇼핑몰 플랫폼'],
+    },
+    {
+      name: 'Python',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+      description: '데이터 처리 및 백엔드 개발',
+      projects: ['전력 모니터링 시스템', '코로나19 정보 조회'],
+    },
+    {
+      name: 'Firebase',
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg',
+      description: '백엔드 서비스 및 데이터베이스',
+      projects: ['쇼핑몰 플랫폼', 'OTT 스트리밍 플랫폼'],
     },
   ];
 
   return (
-    <section id="skills" className="py-24 px-6 bg-black">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl mb-4 text-white">Skills</h2>
-          <p className="text-gray-400 text-lg">
-            전문성을 갖춘 기술 스택
-          </p>
+    <section id="skills" className="skills">
+      <div className="skills-container">
+        <div className="skills-header">
+          <h2>Skills</h2>
+          <p>전문성을 갖춘 기술 스택</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          {skillCategories.map((category, catIndex) => (
-            <div key={catIndex}>
-              <h3 className="text-2xl mb-6 text-white">{category.category}</h3>
-              <div className="space-y-6">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex}>
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-gray-300">{skill.name}</span>
-                      <span className="text-sm text-gray-500">{skill.level}%</span>
-                    </div>
-                    <div className="w-full h-2 bg-zinc-900 rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-green-500 rounded-full transition-all duration-1000 ease-out"
-                        style={{ width: `${skill.level}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
+        <div className="skills-grid">
+          {skills.map((skill) => (
+            <div 
+              key={skill.name} 
+              className="skill-card"
+              onMouseEnter={() => setHoveredSkill(skill.name)}
+              onMouseLeave={() => setHoveredSkill(null)}
+            >
+              <div className={`skill-card-front ${hoveredSkill === skill.name ? 'hidden' : ''}`}>
+                <div className="skill-icon-wrapper">
+                  <img src={skill.icon} alt={skill.name} />
+                </div>
+                <h3 className="skill-title">{skill.name}</h3>
+                <p className="skill-description">{skill.description}</p>
+              </div>
+              
+              <div className={`skill-card-back ${hoveredSkill === skill.name ? 'visible' : ''}`}>
+                <h3 className="skill-title">사용된 프로젝트</h3>
+                <ul className="skill-projects">
+                  {skill.projects.map((project) => (
+                    <li key={project}>{project}</li>
+                  ))}
+                </ul>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Tech Stack Icons */}
-        <div className="mt-16 pt-16 border-t border-zinc-800">
-          <h3 className="text-center text-xl mb-8 text-gray-400">주요 기술</h3>
-          <div className="flex flex-wrap justify-center gap-6">
-            {['React', 'TypeScript', 'JavaScript', 'Firebase', 'Tailwind CSS', 'Git'].map(
-              (tech) => (
-                <div
-                  key={tech}
-                  className="px-6 py-3 bg-zinc-900 border border-zinc-800 rounded-full text-gray-300 hover:bg-green-500 hover:text-black hover:border-green-500 transition-colors cursor-default"
-                >
-                  {tech}
-                </div>
-              )
-            )}
-          </div>
         </div>
       </div>
     </section>
