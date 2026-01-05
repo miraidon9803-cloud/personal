@@ -1,5 +1,5 @@
-import { X, ExternalLink, Github, CheckCircle } from 'lucide-react';
-import '../styles/project-modal.css';
+import { X, ExternalLink, CheckCircle, Github } from "lucide-react";
+import "../styles/project-modal.css";
 
 interface ProjectModalProps {
   isOpen: boolean;
@@ -14,7 +14,8 @@ interface ProjectModalProps {
     fullDescription?: string;
     liveUrl?: string;
     githubUrl?: string;
-    features?: string[];
+    features?: { title: string; desc: string }[];
+    active?: { title: string; text: string }[];
   };
 }
 
@@ -28,11 +29,15 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
           <button onClick={onClose} className="modal-close-button">
             <X size={20} />
           </button>
-          
-          <img src={project.image} alt={project.title} className="modal-image" />
-          
+
+          <img
+            src={project.image}
+            alt={project.title}
+            className="modal-image"
+          />
+
           <h2 className="modal-title">{project.title}</h2>
-          
+
           <div className="modal-tags">
             {project.tags.map((tag) => (
               <span key={tag} className="modal-tag">
@@ -52,6 +57,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
           </div>
 
           {/* Features */}
+
           {project.features && project.features.length > 0 && (
             <div className="modal-section">
               <h3 className="modal-section-title">주요 기능</h3>
@@ -59,7 +65,28 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                 {project.features.map((feature, index) => (
                   <div key={index} className="modal-feature">
                     <CheckCircle size={16} />
-                    <span>{feature}</span>
+                    <div className="feature-content">
+                      <p className="feature-title">{feature.title}</p>
+                      <p className="feature-desc">{feature.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* active */}
+          {project.active && project.active.length > 0 && (
+            <div className="modal-active-section">
+              <h3 className="modal-active-title">기술적 고민 & 해결</h3>
+              <div className="modal-actives">
+                {project.active.map((active, index) => (
+                  <div key={index} className="modal-active">
+                    <CheckCircle size={16} />
+                    <div className="active-content">
+                      <p className="active-title">{active.title}</p>
+                      <p className="active-text">{active.text}</p>
+                    </div>
                   </div>
                 ))}
               </div>

@@ -121,8 +121,40 @@
   margin-bottom: 1.5rem;
 }
 
+.modal-actives {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .modal-actives {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.modal-active {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: #9ca3af;
+  margin-bottom: 3rem;
+}
+
+.active-text {
+  flex: 1;
+  white-space: pre-line;
+}
+
+.modal-active-title {
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
 .modal-features {
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
 
@@ -134,12 +166,23 @@
 
 .modal-feature {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   gap: 0.5rem;
   color: #9ca3af;
 }
 
+.feature-text {
+  flex: 1;
+  white-space: pre-line;
+}
+
 .modal-feature svg {
+  color: #22c55e;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.modal-active svg {
   color: #22c55e;
   flex-shrink: 0;
   margin-top: 2px;
