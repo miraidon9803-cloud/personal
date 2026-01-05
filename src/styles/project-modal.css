@@ -105,6 +105,8 @@
   color: #9ca3af;
   line-height: 1.8;
   margin-bottom: 3rem;
+  white-space: normal;
+  word-break: keep-all;
 }
 
 .modal-section {
@@ -138,7 +140,7 @@
   align-items: flex-start;
   gap: 0.5rem;
   color: #9ca3af;
-  margin-bottom: 3rem;
+  /* margin-bottom: 3rem; */
 }
 
 .active-text {
@@ -192,6 +194,7 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  margin-top: 3rem;
 }
 
 .modal-primary-link {

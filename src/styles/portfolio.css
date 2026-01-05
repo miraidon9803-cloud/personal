@@ -41,7 +41,8 @@
 .portfolio-filter {
   padding: 0.5rem 1.5rem;
   border-radius: 9999px;
-  transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease;
+  transition: background-color 300ms ease, color 300ms ease,
+    border-color 300ms ease;
   font-size: 0.875rem;
 }
 
@@ -84,7 +85,8 @@
   border: 1px solid #27272a;
   border-radius: 2rem;
   overflow: hidden;
-  transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+  transition: transform 300ms ease, border-color 300ms ease,
+    box-shadow 300ms ease;
 }
 
 .project-card:hover {
@@ -201,6 +203,8 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  white-space: normal;
+  word-break: keep-all;
 }
 
 .project-tags {

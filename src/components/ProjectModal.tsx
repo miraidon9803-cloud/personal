@@ -60,7 +60,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
 
           {project.features && project.features.length > 0 && (
             <div className="modal-section">
-              <h3 className="modal-section-title">주요 기능</h3>
+              <h3 className="modal-section-title">맡은 역할</h3>
               <div className="modal-features">
                 {project.features.map((feature, index) => (
                   <div key={index} className="modal-feature">
