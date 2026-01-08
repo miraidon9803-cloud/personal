@@ -1,3 +1,13 @@
+/* =========================
+   Skills (Grid + Mobile Swiper)
+   ========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .skills {
   padding: 6rem 1.5rem;
   background-color: #000000;
@@ -6,6 +16,7 @@
 .skills-container {
   max-width: 1280px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .skills-header {
@@ -30,50 +41,147 @@
   font-size: 1.125rem;
 }
 
+/* =========================
+   PC: Grid layout (768px 초과)
+   ========================= */
 .skills-grid {
-  display: flex;
+  display: grid;
   gap: 1.5rem;
   justify-content: center;
-  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fit, 230px);
 }
 
-@media (min-width: 768px) {
-  .skills-grid {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    justify-content: flex-start;
-  }
+/* grid 모드에서는 카드 폭 고정 */
+.skills-grid .skill-card {
+  width: 230px;
 }
 
-@media (min-width: 1024px) {
-  .skills-grid {
-    justify-content: center;
-  }
+/* =========================
+   Mobile: Swiper (768px 이하에서 렌더됨)
+   ========================= */
+.skills-swiper {
+  padding-bottom: 2.75rem; /* pagination 공간 */
 }
 
+/* 슬라이드 높이 자동 */
+.skills-swiper .swiper-slide {
+  height: auto;
+  display: flex;
+}
+
+/* swiper 모드에서는 카드가 슬라이드 폭에 맞게 */
+.skills-swiper .skill-card {
+  width: 100%;
+}
+
+/* pagination */
+.skills-swiper .swiper-pagination-bullet {
+  opacity: 0.4;
+}
+.skills-swiper .swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
+/* =========================
+   Skill Card (button)
+   ========================= */
 .skill-card {
-  background-color: #18181b;
+  appearance: none;
+  -webkit-appearance: none;
+
   border: 1px solid #27272a;
+  background-color: #18181b;
+  color: inherit;
   border-radius: 1.25rem;
+
   padding: 2.5rem 2rem;
   text-align: center;
-  transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
-  width: 230px;
-  flex-shrink: 0;
-  position: relative;
-  min-height: 280px;
   cursor: pointer;
+
+  min-height: 280px;
+  position: relative;
+
+  transition: transform 300ms ease, border-color 300ms ease,
+    box-shadow 300ms ease;
+
+  overflow: hidden; /* 카드 내부 넘침 방지 */
 }
 
+/* hover */
 .skill-card:hover {
+  /* transform: translateY(-4px); */
   border-color: rgba(34, 197, 94, 0.6);
-  box-shadow: 0 20px 40px rgba(34, 197, 94, 0.15);
+  box-shadow: 0 16px 32px rgba(34, 197, 94, 0.15);
 }
 
+/* focus */
+.skill-card:focus-visible {
+  outline: 2px solid rgba(34, 197, 94, 0.7);
+  outline-offset: 3px;
+}
+
+/* 모바일에서 카드 여백 살짝 줄여서 2장 보기 안정화 */
+@media (max-width: 600px) {
+  .skills {
+    padding: 4rem 1.25rem;
+  }
+
+  .skill-card {
+    padding: 2rem 1.25rem;
+    min-height: 260px;
+  }
+
+  .skill-card-back {
+    padding: 2rem 1.25rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .skills {
+    padding: 3rem 1rem;
+  }
+
+  .skill-card {
+    padding: 1.5rem 0.9rem;
+    min-height: 240px;
+  }
+
+  .skill-card-back {
+    padding: 1.5rem 0.9rem;
+  }
+
+  .skill-title {
+    font-size: 1rem;
+  }
+
+  .skill-description {
+    font-size: 0.8rem;
+  }
+
+  .skill-icon-wrapper {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 1rem;
+  }
+
+  .skill-icon-wrapper img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .skill-projects li {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.55rem;
+  }
+}
+
+/* =========================
+   Front/Back transition
+   ========================= */
 .skill-card-front,
 .skill-card-back {
-  transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1), 
-              visibility 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 400ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .skill-card-front {
@@ -85,8 +193,7 @@
   opacity: 0;
   visibility: hidden;
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
@@ -96,14 +203,15 @@
   opacity: 0;
   visibility: hidden;
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
+
   padding: 2.5rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   pointer-events: none;
 }
 
@@ -113,35 +221,18 @@
   pointer-events: auto;
 }
 
-.skill-projects {
-  list-style: none;
-  padding: 0;
-  margin: 0.75rem 0 0 0;
-}
-
-.skill-projects li {
-  color: #d1d5db;
-  font-size: 0.8rem;
-  line-height: 1.6;
-  margin-bottom: 0.5rem;
-  padding: 0.5rem 0.75rem;
-  background-color: rgba(34, 197, 94, 0.08);
-  border-radius: 0.5rem;
-  border: 1px solid rgba(34, 197, 94, 0.3);
-  transition: all 200ms ease;
-}
-
-.skill-projects li:last-child {
-  margin-bottom: 0;
-}
-
+/* =========================
+   Icon / Text
+   ========================= */
 .skill-icon-wrapper {
   width: 64px;
   height: 64px;
   margin: 0 auto 1.25rem;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   border-radius: 1rem;
   background-color: #27272a;
   transition: background-color 400ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -166,4 +257,36 @@
   color: #9ca3af;
   font-size: 0.875rem;
   line-height: 1.5;
+}
+
+/* =========================
+   Projects list
+   ========================= */
+.skill-projects {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0 0;
+}
+
+.skill-projects li {
+  color: #d1d5db;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+
+  padding: 0.5rem 0.75rem;
+  background-color: rgba(34, 197, 94, 0.08);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+
+  transition: transform 200ms ease;
+  word-break: keep-all;
+}
+
+.skill-projects li:last-child {
+  margin-bottom: 0;
+}
+
+.skill-projects li:hover {
+  transform: translateY(-2px);
 }
