@@ -9,10 +9,7 @@ export function About() {
           {/* Left - Image */}
           <div className="about-image-wrapper">
             <div className="about-image">
-              <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdHxlbnwxfHx8fDE3Njc0NTgwMTd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                alt="Profile"
-              />
+              <img src="/images/personal.jpg" alt="Profile" />
             </div>
           </div>
 

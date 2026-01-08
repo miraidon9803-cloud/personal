@@ -27,12 +27,12 @@
 .about-image-wrapper::before {
   content: "";
   position: absolute;
-  top: -1.5rem;
-  left: -1.5rem;
-  width: 100%;
-  height: 100%;
-  border: 2px solid #22c55e;
-  border-radius: 2rem;
+  top: -0.6rem;
+  left: -0.6rem;
+  width: 320px;
+  height: 320px;
+  border: 1.5px solid rgba(34, 197, 94, 0.6);
+  border-radius: 1.5rem;
   z-index: 0;
 }
 
@@ -42,6 +42,7 @@
   overflow: hidden;
   aspect-ratio: 1;
   z-index: 1;
+  max-width: 320px;
 }
 
 .about-image img {
