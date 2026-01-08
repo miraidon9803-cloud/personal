@@ -74,6 +74,9 @@
 }
 
 /* pagination */
+.swiper-pagination {
+  position: static !important;
+}
 .skills-swiper .swiper-pagination-bullet {
   opacity: 0.4;
 }

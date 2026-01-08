@@ -1,31 +1,31 @@
-import { Mail, Phone, Github, Linkedin } from 'lucide-react';
-import '../styles/contact.css';
+import { Mail, Phone, Github, Linkedin } from "lucide-react";
+import "../styles/contact.css";
 
 export function Contact() {
   const contacts = [
     {
       icon: <Mail size={24} />,
-      title: 'Email',
-      value: 'your.email@example.com',
-      action: 'mailto:your.email@example.com',
+      title: "Email",
+      value: "miraidon9803@gmail.com",
+      action: "mailto:miraidon9803@gmail.com",
     },
     {
       icon: <Phone size={24} />,
-      title: 'Phone',
-      value: '010-1234-5678',
-      action: 'tel:010-1234-5678',
+      title: "Phone",
+      value: "010-3437-0351",
+      action: "tel:010-3437-0351",
     },
     {
       icon: <Github size={24} />,
-      title: 'GitHub',
-      value: 'github.com/yourusername',
-      action: 'https://github.com/yourusername',
+      title: "GitHub",
+      value: "github.com/miraidon9803-cloud",
+      action: "https://github.com/miraidon9803-cloud",
     },
     {
       icon: <Linkedin size={24} />,
-      title: 'LinkedIn',
-      value: 'linkedin.com/in/yourusername',
-      action: 'https://linkedin.com/in/yourusername',
+      title: "준비중입니다",
+      value: "",
+      action: "",
     },
   ];
 
@@ -40,9 +40,7 @@ export function Contact() {
         <div className="contact-grid">
           {contacts.map((contact, index) => (
             <div key={index} className="contact-card">
-              <div className="contact-icon-wrapper">
-                {contact.icon}
-              </div>
+              <div className="contact-icon-wrapper">{contact.icon}</div>
               <h3 className="contact-title">{contact.title}</h3>
               <p className="contact-value">{contact.value}</p>
               <a href={contact.action} className="contact-button">
