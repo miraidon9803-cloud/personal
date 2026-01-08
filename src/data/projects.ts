@@ -118,39 +118,28 @@ export const project = [
     description:
       "IoT 센서와 머신러닝을 활용한 스마트 전력 모니터링 시스템. 가전제품 인식 및 이상 전력 소비 감지 기능을 제공합니다.",
     fullDescription:
-      "IoT 기반 전력 모니터링 시스템으로, 실시간으로 가전제품의 전력 사용량을 모니터링하고 머신러닝 알고리즘을 통해 각 가전제품을 자동으로 인식합니다. 이상 전력 소비 패턴을 감지하여 사용자에게 알림을 제공하며, 전력 사용 통계와 절감 방안을 제안합니다.",
+      "IoT 기반 전력 모니터링 시스템으로, 가전제품의 전력 사용 데이터를 실시간으로 수집·저장하고 웹에서 시각화합니다. 수집된 데이터를 바탕으로 전력 사용 패턴을 분석해 이상 징후를 감지하고, 사용자에게 알림과 함께 절감 방향을 제안합니다.",
     image:
       "https://images.unsplash.com/photo-1564164494009-3876b2d197f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3dlciUyMG1vbml0b3JpbmclMjBlbGVjdHJpY2FsJTIwbWV0ZXJ8ZW58MXx8fHwxNzY3NDU3MjU5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
     tags: ["Python", "IoT", "Machine Learning"],
-    year: "2023",
+    year: "2022",
     features: [
       {
-        title: "IoT 센서를 통한 실시간 전력 데이터 수집",
-        desc: "센서에서 데이터 수신 및 처리",
+        title: "서버 API 구축 및 DB 연동",
+        desc: "Flask 기반 API 구현 MySQL에서 최신 측정값을 조회해 JSON 형태로 실시간 제공",
       },
       {
-        title: "머신러닝 기반 가전제품 자동 인식",
-        desc: "훈련된 모델을 통한 기기 식별",
+        title: "전력 통계/시각화 대시보드",
+        desc: "전력 사용 흐름을 그래프·차트로 표현",
       },
       {
-        title: "이상 전력 소비 패턴 감지 및 알림",
-        desc: "비정상 사용량 자동 감지",
-      },
-      {
-        title: "전력 사용 통계 및 시각화 대시보드",
-        desc: "그래프 및 차트로 데이터 표현",
-      },
-      {
-        title: "전력 절감 방안 추천 시스템",
-        desc: "사용 패턴 분석 기반 절감 제안",
-      },
-      {
-        title: "사용자별 맞춤형 리포트 생성",
-        desc: "월별 상세 전력 사용 보고서",
+        title: "실시간 전력 데이터 수집·처리",
+        desc: "IoT 센서 데이터 수신 및 전처리, 측정값(전류/전압 등) 관리",
       },
     ],
-    liveUrl: "https://example-power-monitor.com",
-    githubUrl: "https://github.com/yourusername/power-monitoring",
+    liveUrl:
+      "https://drive.google.com/drive/folders/1BGdaSvOjK8LM0akHyBw8NbbdYmQGhG6y",
+    githubUrl: "https://github.com/miraidon9803-cloud/capstone",
   },
   {
     title: "BeautifulSoup을 이용한 코로나19 정보 조회 프로그램",
@@ -189,7 +178,8 @@ export const project = [
         desc: "정기적 데이터 갱신 자동화",
       },
     ],
-    liveUrl: "https://example-covid19-tracker.com",
+    liveUrl:
+      "https://drive.google.com/drive/folders/1LnvjvMgHO28n1mJOWagKc0fEZ6hDEJyw",
     githubUrl: "https://github.com/yourusername/covid19-tracker",
   },
 ];

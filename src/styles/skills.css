@@ -1,5 +1,5 @@
 /* =========================
-   Skills (Grid + Mobile Swiper)
+   Skills (Grid + Mobile Swiper) + Hover Opacity Overlay
    ========================= */
 
 *,
@@ -63,13 +63,12 @@
   padding-bottom: 2.75rem; /* pagination 공간 */
 }
 
-/* 슬라이드 높이 자동 */
 .skills-swiper .swiper-slide {
   height: auto;
   display: flex;
+  align-items: stretch;
 }
 
-/* swiper 모드에서는 카드가 슬라이드 폭에 맞게 */
 .skills-swiper .skill-card {
   width: 100%;
 }
@@ -101,15 +100,12 @@
   min-height: 280px;
   position: relative;
 
-  transition: transform 300ms ease, border-color 300ms ease,
-    box-shadow 300ms ease;
-
-  overflow: hidden; /* 카드 내부 넘침 방지 */
+  transition: border-color 300ms ease, box-shadow 300ms ease;
+  overflow: hidden;
 }
 
-/* hover */
+/* hover (카드 자체는 위치 안 움직이게) */
 .skill-card:hover {
-  /* transform: translateY(-4px); */
   border-color: rgba(34, 197, 94, 0.6);
   box-shadow: 0 16px 32px rgba(34, 197, 94, 0.15);
 }
@@ -120,7 +116,7 @@
   outline-offset: 3px;
 }
 
-/* 모바일에서 카드 여백 살짝 줄여서 2장 보기 안정화 */
+/* ✅ 모바일에서 카드 크기 줄이기 */
 @media (max-width: 600px) {
   .skills {
     padding: 4rem 1.25rem;
@@ -129,10 +125,6 @@
   .skill-card {
     padding: 2rem 1.25rem;
     min-height: 260px;
-  }
-
-  .skill-card-back {
-    padding: 2rem 1.25rem;
   }
 }
 
@@ -144,10 +136,6 @@
   .skill-card {
     padding: 1.5rem 0.9rem;
     min-height: 240px;
-  }
-
-  .skill-card-back {
-    padding: 1.5rem 0.9rem;
   }
 
   .skill-title {
@@ -176,49 +164,44 @@
 }
 
 /* =========================
-   Front/Back transition
+   Hover Opacity Overlay (front/back 교체 X)
    ========================= */
-.skill-card-front,
-.skill-card-back {
-  transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1),
-    visibility 400ms cubic-bezier(0.4, 0, 0.2, 1);
-}
 
+/* front는 기본 표시 */
 .skill-card-front {
+  position: relative;
+  z-index: 1;
   opacity: 1;
-  visibility: visible;
+  transition: opacity 300ms ease;
 }
 
-.skill-card-front.hidden {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
+/* back은 위에 덮어서 opacity로만 제어 */
 .skill-card-back {
-  opacity: 0;
-  visibility: hidden;
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
+  z-index: 2;
 
-  padding: 2.5rem 2rem;
+  opacity: 0;
+  pointer-events: none;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
 
-  pointer-events: none;
+  transition: opacity 300ms ease;
 }
 
-.skill-card-back.visible {
+/* hover or active(is-active)일 때 */
+.skill-card:hover .skill-card-back,
+.skill-card.is-active .skill-card-back {
   opacity: 1;
-  visibility: visible;
   pointer-events: auto;
+}
+
+.skill-card:hover .skill-card-front,
+.skill-card.is-active .skill-card-front {
+  opacity: 0;
 }
 
 /* =========================
@@ -235,7 +218,7 @@
 
   border-radius: 1rem;
   background-color: #27272a;
-  transition: background-color 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 300ms ease;
 }
 
 .skill-card:hover .skill-icon-wrapper {
@@ -257,6 +240,8 @@
   color: #9ca3af;
   font-size: 0.875rem;
   line-height: 1.5;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 
 /* =========================
@@ -274,7 +259,7 @@
   line-height: 1.6;
   margin-bottom: 0.5rem;
 
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem;
   background-color: rgba(34, 197, 94, 0.08);
   border-radius: 0.5rem;
   border: 1px solid rgba(34, 197, 94, 0.3);
@@ -285,8 +270,4 @@
 
 .skill-projects li:last-child {
   margin-bottom: 0;
-}
-
-.skill-projects li:hover {
-  transform: translateY(-2px);
 }

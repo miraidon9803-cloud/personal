@@ -4,8 +4,8 @@ import { skill } from "../data/skill";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
+
+import "swiper/swiper-bundle.css";
 
 type Skill = {
   name: string;
@@ -28,7 +28,6 @@ export function Skills() {
     const update = () => setIsMobile(mq.matches);
     update();
 
-    // Safari 대응: addEventListener 미지원일 수 있음
     if (mq.addEventListener) mq.addEventListener("change", update);
     else mq.addListener(update);
 
@@ -97,7 +96,7 @@ export function Skills() {
             slidesPerGroup={2}
             breakpoints={{
               1024: { slidesPerView: 4, slidesPerGroup: 2, spaceBetween: 16 },
-              480: { slidesPerView: 2, slidesPerGroup: 2, spaceBetween: 12 },
+              360: { slidesPerView: 2, slidesPerGroup: 2, spaceBetween: 12 },
             }}
           >
             {skills.map((s) => (
